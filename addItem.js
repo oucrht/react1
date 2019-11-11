@@ -19,20 +19,19 @@ class AddItem extends React.Component {
                                    inputValue: e.target.value
                                })
                            }}/>
-                    <input id={"submit"} type={"submit"} value={"添加功能"} onClick={()=>{
+                    <button onClick={()=>{
                         this.setState({
                             list: [...this.state.list, this.state.inputValue],
                             inputValue: ""
                         })
-                    }}/>
+                    }}>添加功能</button>
                 </form>
                 <ul> {
                     this.state.list.map((item, index) => {
                         return (
                             <li key={index} onClick={() => {
-                                if (index > 3) index = 3;
                                 this.setState({
-                                        wordContent: this.state.words[index]
+                                        wordContent: this.state.words[index>3?3:index]
                                     }
                                 );
                             }}><a href={"##"}>{item}</a></li>
